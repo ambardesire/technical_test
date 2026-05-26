@@ -7,38 +7,40 @@ interface OrdersTableProps<T> {
 
 const StyledTable = <T,>({ elements, columns }: OrdersTableProps<T>) => {
   return (
-    <table className="text-text">
-      <thead className="border rounded-md bg-primary">
-        <tr className="border-b-color-primary border-solid">
-          {columns.map((column) => {
-            return (
-              <th key={column.key.toString()} className="p-3 text-left">
-                {column.header}
-              </th>
-            );
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {elements.map((row, rowIndex) => (
-          <tr
-            key={rowIndex}
-            className="border border-color-primary border-solid"
-          >
+    <div className="w-full overflow-x-auto min-w-[700px]">
+      <table className="w-full text-text">
+        <thead className="bg-secondary text-white">
+          <tr className="border border-secondary border-solid">
             {columns.map((column) => {
-              const value = row[column.key];
-              console.log(column, value);
-
               return (
-                <td key={column.key.toString()} className="p-3 text-left">
-                  {value ? String(value) : ""}
-                </td>
+                <th key={column.key.toString()} className="p-3 text-left">
+                  {column.header}
+                </th>
               );
             })}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {elements.map((row, rowIndex) => (
+            <tr key={rowIndex} className="border border-secondary border-solid">
+              {columns.map((column) => {
+                const value = row[column.key];
+
+                return (
+                  <td key={column.key.toString()} className="p-3 text-left">
+                    {column.render
+                      ? column.render(value, row)
+                      : value
+                        ? String(value)
+                        : ""}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

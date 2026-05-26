@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import "./App.css";
-import StyledHeader from "./components/header";
 import { useThemeStore } from "./store/theme";
 import OrdersListing from "./pages/OrdersListing";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import OrderDetails from "./pages/OrderDetails";
+import MainLayout from "./pages/MainLayout";
 
 function App() {
   const { theme } = useThemeStore();
@@ -10,20 +12,16 @@ function App() {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
+
   return (
-    <div className="min-h-screen bg-main-bg flex flex-col">
-      <section id="header">
-        <StyledHeader />
-      </section>
-
-      <section id="main-container">
-        <div className="min-h-screen flex flex-col items-center justify-center p-6">
-          <OrdersListing />
-        </div>
-      </section>
-
-      <section id="footer"></section>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<OrdersListing />} />
+          <Route path="detail" element={<OrderDetails />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -4,7 +4,7 @@ export const translateOrderStatus = (status: OrderStatus) => {
   const translations: Record<OrderStatus, string> = {
     PENDING: "Pendiente",
     DELIVERED: "Completada",
-    RETURNED: "Cancelada",
+    CANCELLED: "Cancelada",
   };
 
   return translations[status];
