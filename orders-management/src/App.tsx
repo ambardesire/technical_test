@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import "./App.css";
 import StyledHeader from "./components/header";
+import { useThemeStore } from "./store/theme";
 import OrdersListing from "./pages/OrdersListing";
 
 function App() {
+  const { theme } = useThemeStore();
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
   return (
     <div className="min-h-screen bg-main-bg flex flex-col">
       <section id="header">
@@ -10,7 +17,7 @@ function App() {
       </section>
 
       <section id="main-container">
-        <div className="flex flex-col items-center justify-center p-6">
+        <div className="min-h-screen flex flex-col items-center justify-center p-6">
           <OrdersListing />
         </div>
       </section>

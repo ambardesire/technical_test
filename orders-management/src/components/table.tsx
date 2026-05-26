@@ -1,7 +1,4 @@
-export type Column<T> = {
-  key: keyof T;
-  header: string;
-};
+import type { Column } from "../types/table";
 
 interface OrdersTableProps<T> {
   elements: T[];
@@ -10,8 +7,8 @@ interface OrdersTableProps<T> {
 
 const StyledTable = <T,>({ elements, columns }: OrdersTableProps<T>) => {
   return (
-    <table>
-      <thead className="border rounded-md">
+    <table className="text-text">
+      <thead className="border rounded-md bg-primary">
         <tr className="border-b-color-primary border-solid">
           {columns.map((column) => {
             return (
@@ -24,7 +21,10 @@ const StyledTable = <T,>({ elements, columns }: OrdersTableProps<T>) => {
       </thead>
       <tbody>
         {elements.map((row, rowIndex) => (
-          <tr key={rowIndex} className="border-b-color-primary border-solid">
+          <tr
+            key={rowIndex}
+            className="border border-color-primary border-solid"
+          >
             {columns.map((column) => {
               const value = row[column.key];
               console.log(column, value);

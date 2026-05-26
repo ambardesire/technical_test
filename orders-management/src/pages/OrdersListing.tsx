@@ -1,13 +1,7 @@
 import StyledButton from "../components/button";
-import StyledTable, { type Column } from "../components/table";
-
-type OrderItem = {
-  order_id: string;
-  products_qty: number;
-  status: string;
-  total: number;
-  username: string;
-};
+import StyledTable from "../components/table";
+import type { OrderItem } from "../types/orders";
+import type { Column } from "../types/table";
 
 const OrdersListing = () => {
   const columns: Array<Column<OrderItem>> = [
@@ -33,7 +27,7 @@ const OrdersListing = () => {
     },
   ];
 
-  const orders = [
+  const orders: OrderItem[] = [
     {
       order_id: "1WERTYU52",
       products_qty: 3,
@@ -44,7 +38,8 @@ const OrdersListing = () => {
   ];
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
+      <h1>Ordenes</h1>
       <StyledButton variety="primary" onClick={() => {}}>
         Buscar
       </StyledButton>
