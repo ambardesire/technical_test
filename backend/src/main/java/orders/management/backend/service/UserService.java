@@ -23,7 +23,7 @@ public class UserService {
     public User createUser(User user){
 
         //Verify if email exists with another user
-        if(userRepository.existsByEmail(user.getEmail())) {
+        if(userRepository.existsById(user.getId())) {
              throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST, "The email is already registered with another user."
             );
@@ -45,13 +45,6 @@ public class UserService {
         if (!userRepository.existsById(userId)) {
             throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "User" + userId + " doesn't exist."
-            );
-        }
-       
-       //Verify if new email exists with another user
-        if(userRepository.existsByEmail(updatedUser.getEmail())) {
-             throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST, "The email is already registered with another user."
             );
         }
 

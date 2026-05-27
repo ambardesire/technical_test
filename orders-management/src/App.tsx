@@ -17,8 +17,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<OrdersListing />} />
-          <Route path="detail" element={<OrderDetails />} />
+          <Route path="/orders" element={<OrdersListing />} />
+          <Route path="/orders/:orderId" element={<OrderDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>

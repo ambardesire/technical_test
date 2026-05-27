@@ -9,7 +9,7 @@ interface UsersStore {
   setUsersList: (users: User[]) => void;
   setCurrentUser: (user: User) => void;
   setUsersLoading: (loading: boolean) => void;
-  setUsersError: (error: string) => void;
+  setUsersError: (error: string | null) => void;
   resetUser: () => void;
 }
 

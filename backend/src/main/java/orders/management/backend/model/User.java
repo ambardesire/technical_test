@@ -1,7 +1,6 @@
 package orders.management.backend.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -15,10 +14,6 @@ public class User {
     private String name;
     private String firstLastName;
     private String secondLastName;
-    
-    @Indexed(unique=true)
-    private String email;
-
 }
 
 

@@ -22,3 +22,24 @@ export const getOrdersList = async () => {
     setOrdersLoading(false);
   }
 };
+
+export const getSingleOrder = async (orderId: string) => {
+  const { setOrdersLoading, setOrdersError, setCurrentOrder } =
+    useOrdersStore.getState();
+
+  try {
+    setOrdersLoading(true);
+    setOrdersError(null);
+    const response = await fetch(`${BASE_URL}/orders/${orderId}`);
+
+    setCurrentOrder(await response.json());
+  } catch (error) {
+    setOrdersError(
+      error instanceof Error
+        ? error.message
+        : "There was an error trying to fetch the order details.",
+    );
+  } finally {
+    setOrdersLoading(false);
+  }
+};
