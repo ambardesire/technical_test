@@ -1,4 +1,4 @@
-import type { OrderStatus } from "../types/orders";
+import type { OrderStatus } from "../types/order";
 import { translateOrderStatus } from "../utils";
 
 interface StyledPillProps {
@@ -14,7 +14,9 @@ const StyledPill = ({ value }: StyledPillProps) => {
             ? "text-success border-success bg-success-light"
             : value === "CANCELLED"
               ? "text-error border-error bg-error-light"
-              : "text-gray border-gray bg-gray-light"
+              : value === "TRANSIT"
+                ? "text-warning border-warning bg-warning-light"
+                : "text-gray border-gray bg-gray-light"
         }`}
     >
       {translateOrderStatus(value)}
