@@ -8,6 +8,7 @@ import type { Order } from "../types/order";
 import type { Column } from "../types/table";
 import { getOrdersList } from "../api/orderServices";
 import { useNavigate } from "react-router-dom";
+import StyledContainer from "../components/container";
 
 const OrdersListing = () => {
   const navigate = useNavigate();
@@ -130,8 +131,8 @@ const OrdersListing = () => {
   return (
     <div className="flex flex-col gap-3">
       <h1 className="ms-1 text-text">Listado de ordenes</h1>
-      <div className="flex flex-col min-w-8/10 sm:min-w-9/10 card shadow-md border border-gray-light rounded-xl items-center justify-center p-8 gap-3 relative">
-        <div className="flex w-full justify-end gap-2">
+      <StyledContainer>
+        <div className="flex w-full justify-end gap-2 mb-3">
           <InputTypeAhead
             placeholder="Introduce No. de pedido"
             onChange={() => {}}
@@ -155,7 +156,7 @@ const OrdersListing = () => {
             + Crear orden
           </StyledButton>
         </div>
-      </div>
+      </StyledContainer>
     </div>
   );
 };

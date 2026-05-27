@@ -20,7 +20,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user){
+    public List<User> createUser(User user){
 
         //Verify if email exists with another user
         if(userRepository.existsById(user.getId())) {
@@ -28,8 +28,9 @@ public class UserService {
                 HttpStatus.BAD_REQUEST, "The email is already registered with another user."
             );
         }
-
-        return userRepository.save(user);
+        userRepository.save(user);
+        
+        return userRepository.findAll();
     }
 
     public List<User> getAllUsers() {

@@ -24,7 +24,7 @@ public class OrderService {
         this.userRepository = userRepository;
     }
 
-    public Order createOrder(Order order){
+    public List<Order> createOrder(Order order){
 
         //Verify if user exists
         if(!userRepository.existsById(order.getUserId())) {
@@ -53,7 +53,9 @@ public class OrderService {
         order.setQuantity(totalProducts);
         order.setTotal(totalAmount);
 
-        return orderRepository.save(order);
+        orderRepository.save(order);
+
+        return orderRepository.findAll();
     }
 
     public List<Order> getAllOrders() {

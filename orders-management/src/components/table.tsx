@@ -12,8 +12,8 @@ const StyledTable = <T extends { id: string }>({
   onSelectRow,
 }: OrdersTableProps<T>) => {
   return (
-    <div className="w-full overflow-x-auto min-w-[700px]">
-      <table className="w-full text-text">
+    <div className="w-full overflow-x-auto">
+      <table className="min-w-[700px] w-full text-text">
         <thead className="bg-secondary text-white">
           <tr className="border border-secondary border-solid">
             {columns.map((column) => {

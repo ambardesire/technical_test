@@ -11,3 +11,10 @@ export type Order = {
   userId: string;
   address: string;
 };
+
+export type OrderPayload = {
+  products: Product[];
+  status: OrderStatus;
+  userId: string;
+  address: string;
+};
