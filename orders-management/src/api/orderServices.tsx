@@ -64,7 +64,7 @@ export const getCreateOrder = async (order: OrderPayload) => {
   try {
     setOrdersLoading(true);
     setOrdersError(null);
-    const response = await fetch(`${BASE_URL}/orders}`, {
+    const response = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -99,7 +99,7 @@ export const getUpdateOrder = async (order: OrderPayload, orderId: string) => {
   try {
     setOrdersLoading(true);
     setOrdersError(null);
-    const response = await fetch(`${BASE_URL}/orders}/${orderId}`, {
+    const response = await fetch(`${BASE_URL}/orders/${orderId}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -131,7 +131,7 @@ export const getDeleteOrder = async (orderId: string) => {
   try {
     setOrdersLoading(true);
     setOrdersError(null);
-    const response = await fetch(`${BASE_URL}/orders}/${orderId}`, {
+    const response = await fetch(`${BASE_URL}/orders/${orderId}`, {
       method: "DELETE",
     });
 

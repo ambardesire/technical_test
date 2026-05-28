@@ -28,7 +28,7 @@ const OrderDetails = () => {
       render: (_, row) => {
         return (
           <div className="flex flex-col justify-center items-start">
-            <p>{`#${row.id.toUpperCase()}`}</p>
+            <p>{`#${row.id?.toUpperCase()}`}</p>
           </div>
         );
       },
@@ -144,6 +144,7 @@ const OrderDetails = () => {
             <StyledTable
               elements={currentOrder?.products ?? []}
               columns={columns}
+              noData="No se encontraron productos asociados a la orden."
             />
           </div>
           <div className="flex justify-end gap-8 me-1">

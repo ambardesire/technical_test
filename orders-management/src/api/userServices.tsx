@@ -64,7 +64,7 @@ export const getCreateUser = async (user: User) => {
   try {
     setUsersLoading(true);
     setUsersError(null);
-    const response = await fetch(`${BASE_URL}/users}`, {
+    const response = await fetch(`${BASE_URL}/users`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -100,7 +100,7 @@ export const getUpdateUser = async (user: User, userId: string) => {
   try {
     setUsersLoading(true);
     setUsersError(null);
-    const response = await fetch(`${BASE_URL}/users}/${userId}`, {
+    const response = await fetch(`${BASE_URL}/users/${userId}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",

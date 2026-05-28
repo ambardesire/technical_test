@@ -4,12 +4,14 @@ interface OrdersTableProps<T> {
   elements: T[];
   columns: Column<T>[];
   onSelectRow?: (id: string) => void;
+  noData: string;
 }
 
 const StyledTable = <T extends { id: string }>({
   elements,
   columns,
   onSelectRow,
+  noData,
 }: OrdersTableProps<T>) => {
   return (
     <div className="w-full overflow-x-auto">
@@ -26,32 +28,36 @@ const StyledTable = <T extends { id: string }>({
           </tr>
         </thead>
         <tbody>
-          {elements.map((row, rowIndex) => (
-            <tr
-              key={rowIndex}
-              className={`border border-secondary border-solid ${onSelectRow ? "hover:cursor-pointer hover:bg-primary-light" : ""}`}
-            >
-              {columns.map((column) => {
-                const value = row[column.key];
+          {Boolean(elements.length) &&
+            elements.map((row, rowIndex) => (
+              <tr
+                key={rowIndex}
+                className={`border border-secondary border-solid ${onSelectRow ? "hover:cursor-pointer hover:bg-primary-light" : ""}`}
+              >
+                {columns.map((column) => {
+                  const value = row[column.key];
 
-                return (
-                  <td
-                    key={column.key.toString()}
-                    onClick={() => onSelectRow?.(row.id)}
-                    className={`p-3 text-left`}
-                  >
-                    {column.render
-                      ? column.render(value, row)
-                      : value
-                        ? String(value)
-                        : ""}
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
+                  return (
+                    <td
+                      key={column.key.toString()}
+                      onClick={() => onSelectRow?.(row.id)}
+                      className={`p-3 text-left`}
+                    >
+                      {column.render
+                        ? column.render(value, row)
+                        : value
+                          ? String(value)
+                          : ""}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
         </tbody>
       </table>
+      {Boolean(!elements.length) && (
+        <p className="text-center font-bold p-3">{noData}</p>
+      )}
     </div>
   );
 };

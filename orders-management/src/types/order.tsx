@@ -14,7 +14,7 @@ export type Order = {
 
 export type OrderPayload = {
   products: Product[];
-  status: OrderStatus;
+  status: OrderStatus | "";
   userId: string;
   address: string;
 };
