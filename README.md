@@ -131,7 +131,8 @@ npm install will install all the dependencies required for the project to run co
 
 ## 🎥 Demo evidences
 
-[![Watch the demo](https://img.youtube.com/vi/rd5dBOZLWyo/0.jpg)](https://youtu.be/rd5dBOZLWyo)
+Video: [![Watch the demo](https://img.youtube.com/vi/rd5dBOZLWyo/0.jpg)](https://youtu.be/rd5dBOZLWyo)
+Screenshots: [Google drive](https://drive.google.com/drive/folders/173ghOeeFRsCqKSRmF0FygSkgXM3FbvfJ?usp=share_link)
 
 ## Online documentation
 - Postman documents: [Postman](https://documenter.getpostman.com/view/55252723/2sBXwnsBXe)
