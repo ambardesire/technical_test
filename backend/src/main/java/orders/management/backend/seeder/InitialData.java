@@ -40,19 +40,38 @@ public class InitialData implements CommandLineRunner {
         User user5 = savedUsers.get(4);
         User user6 = savedUsers.get(5);
 
-        Product itemA = createProduct("Sofa Naranja", 1, 19990.00);
-        Product itemB = createProduct("Peluche Hugsy", 2, 455.0);
-        Product itemC = createProduct("Marco amarillo", 3, 250.0);
-        Product itemD = createProduct("Guitarra acústica", 2, 1650.0);
+        Product itemA = new Product();
+        itemA.setId("HY78YJI");
+        itemA.setName("Sofa Naranja");
+        itemA.setPrice(19990);
+        itemA.setQuantity(1);
+
+        Product itemB = new Product();
+        itemB.setId("AP9YHJ0");
+        itemB.setName("Peluche Hugsy");
+        itemB.setPrice(455);
+        itemB.setQuantity(2);
+
+        Product itemC = new Product();
+        itemC.setId("GH98YKH6");
+        itemC.setName("Marco amarillo");
+        itemC.setPrice(250);
+        itemC.setQuantity(3);
+
+        Product itemD = new Product();
+        itemD.setId("76TUJV");
+        itemD.setName("Guitarra acustica");
+        itemD.setPrice(1650);
+        itemD.setQuantity(4);
 
         orderRepository.saveAll(List.of(
-            createOrder(user1.getId(), "Central Perk 234, NY", "CREADO", 250.0, List.of(itemA, itemC)),
-            createOrder(user2.getId(), "Purple apartment 20, NY", "ENVIADO", 100.0, List.of(itemA)),
-            createOrder(user3.getId(), "90 Bedford Street, New York, NY 10014", "ENTREGADO", 500.0, List.of(itemD, itemB)),
-            createOrder(user4.getId(), "Central Perk 234, NY", "CANCELADO", 20.0, List.of(itemA, itemB, itemC)),
-            createOrder(user5.getId(), "Central Perk 234, NY", "CREADO", 350.0, List.of(itemA, itemB)),
-            createOrder(user6.getId(), "90 Bedford Street, New York, NY 10014", "ENTREGADO", 500.0, List.of(itemC, itemB)),
-            createOrder(user2.getId(), "90 Bedford Street, New York, NY 10014", "ENTREGADO", 500.0, List.of(itemD, itemB, itemA))
+            createOrder(user1.getId(), "Central Perk 234, NY", "PENDING", 20240.0, List.of(itemA, itemC), 4),
+            createOrder(user2.getId(), "Purple apartment 20, NY", "DELIVERED", 19990.0, List.of(itemA), 1),
+            createOrder(user3.getId(), "90 Bedford Street, New York, NY 10014", "DELIVERED", 2105.0, List.of(itemD, itemB), 6),
+            createOrder(user4.getId(), "Central Perk 234, NY", "CANCELLED", 20695.0, List.of(itemA, itemB, itemC), 6),
+            createOrder(user5.getId(), "Central Perk 234, NY", "TRANSIT", 20445.0, List.of(itemA, itemB), 3),
+            createOrder(user6.getId(), "90 Bedford Street, New York, NY 10014", "DELIVERED", 705.0, List.of(itemC, itemB), 5),
+            createOrder(user2.getId(), "90 Bedford Street, New York, NY 10014", "DELIVERED", 22095.0, List.of(itemD, itemB, itemA), 7)
         ));
 
         System.out.println("DataSeeder: Base de datos poblada exitosamente.");
@@ -67,13 +86,14 @@ public class InitialData implements CommandLineRunner {
         return u;
     }
 
-    private Order createOrder(String userId, String dir, String status, double total, List<Product> items) {
+    private Order createOrder(String userId, String dir, String status, double total, List<Product> items, int quantity) {
         Order o = new Order();
         o.setUserId(userId);
         o.setAddress(dir);
         o.setStatus(status);
         o.setTotal(total);
         o.setProducts(items);
+        o.setQuantity(quantity);
         return o;
     }
 }
