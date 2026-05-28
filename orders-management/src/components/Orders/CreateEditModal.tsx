@@ -175,14 +175,16 @@ const CreateEditOrderModal = ({
       <div>
         <div className="flex flex-col w-full border-b border-b-gray-light p-6 pt-3 gap-5">
           {orderId && (
-            <p className="font-bold">Orden {`#${orderId?.toUpperCase()}`}</p>
+            <p className="font-bold text-text">
+              Orden {`#${orderId?.toUpperCase()}`}
+            </p>
           )}
           <div className="w-full grid grid-cols-2 gap-6">
             <div className="col-span-2 md:col-span-1">
               <StyledInputSelect
                 label={"Usuario"}
                 name={"user"}
-                defaultValue={newOrder.userId}
+                value={newOrder.userId}
                 placeholder={"Selecciona un usuario"}
                 className="w-full"
                 onSelectOption={(e) =>
@@ -198,7 +200,7 @@ const CreateEditOrderModal = ({
               <StyledInputSelect
                 label={"Estatus"}
                 name={"status"}
-                defaultValue={
+                value={
                   newOrder.status === ""
                     ? ""
                     : translateOrderStatus(newOrder.status)

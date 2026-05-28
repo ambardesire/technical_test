@@ -1,7 +1,10 @@
 package orders.management.backend.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -109,5 +112,24 @@ public class OrderService {
 
         orderRepository.deleteById(orderId);
     }
-    
+
+    public List<Order> searchBy(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return orderRepository.findAll();
+        }
+
+        String trimValue = value.trim();
+        
+        List<Order> searchByStatus = orderRepository.findByStatusContainingIgnoreCase(trimValue);
+        List<Order> searchByUserId = orderRepository.findByUserIdContainingIgnoreCase(trimValue);
+        List<Order> searchById = orderRepository.findByIdContainingIgnoreCase(trimValue);
+
+
+        Set<Order> results = new HashSet<>();
+        results.addAll(searchByStatus);
+        results.addAll(searchByUserId);
+        results.addAll(searchById);
+
+        return new ArrayList<>(results);
+    }
 }

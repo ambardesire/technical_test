@@ -17,13 +17,43 @@ export const getOrdersList = async () => {
         "Hubo un error al obtener las órdenes. Intenta de nuevo más tarde.",
       );
     }
-
-    setOrdersList(await response.json());
+    const data = await response.json();
+    setOrdersList(data);
   } catch (error) {
     setOrdersError(
       error instanceof Error
         ? error.message
         : "Hubo un error al obtener las órdenes. Intenta de nuevo más tarde.",
+    );
+  } finally {
+    setOrdersLoading(false);
+  }
+};
+
+export const getSearchOrders = async (value: string) => {
+  const { setOrdersLoading, setOrdersError, setOrdersList } =
+    useOrdersStore.getState();
+
+  try {
+    setOrdersLoading(true);
+    setOrdersError(null);
+    const response = await fetch(
+      `${BASE_URL}/orders/search?value=${encodeURIComponent(value)}`,
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        "Hubo un error al buscar las órdenes. Intenta de nuevo más tarde.",
+      );
+    }
+
+    const data = await response.json();
+    setOrdersList(data);
+  } catch (error) {
+    setOrdersError(
+      error instanceof Error
+        ? error.message
+        : "Hubo un error al buscar las órdenes. Intenta de nuevo más tarde.",
     );
   } finally {
     setOrdersLoading(false);
@@ -44,8 +74,8 @@ export const getSingleOrder = async (orderId: string) => {
         "Hubo un error al obtener la orden. Intenta de nuevo más tarde.",
       );
     }
-
-    setCurrentOrder(await response.json());
+    const data = await response.json();
+    setCurrentOrder(data);
   } catch (error) {
     setOrdersError(
       error instanceof Error

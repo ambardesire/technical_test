@@ -153,14 +153,8 @@ const OrdersListing = () => {
       />
       <h1 className="ms-1 text-text mb-3">Listado de órdenes</h1>
       <StyledContainer>
-        <div className="flex w-full justify-end gap-2 mb-3">
-          <InputTypeAhead
-            placeholder="Introduce No. de pedido"
-            onChange={() => {}}
-          />
-          <StyledButton variety="primary" onClick={() => {}}>
-            Buscar
-          </StyledButton>
+        <div className="flex w-full justify-start gap-2 mb-3">
+          <InputTypeAhead />
         </div>
         <StyledTable
           elements={ordersList}

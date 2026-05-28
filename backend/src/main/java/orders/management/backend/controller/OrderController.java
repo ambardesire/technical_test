@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import orders.management.backend.model.Order;
@@ -51,6 +52,11 @@ public class OrderController {
     @DeleteMapping("/{orderId}")
     public void deleteOrder(@PathVariable String orderId) {
         orderService.deleteOrder(orderId);
+    }
+
+    @GetMapping("/search")
+    public List<Order> searchBy(@RequestParam String value) {
+        return orderService.searchBy(value);
     }
 
 }
