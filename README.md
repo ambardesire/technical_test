@@ -129,6 +129,8 @@ npm run dev
 ```
 npm install will install all the dependencies required for the project to run correctly, once the install finishes you will run the application using npm run dev.
 
+Go to `http://localhost:5173/orders` and you will see the web application running and ready to go!
+
 ## 🎥 Demo evidences
 
 Video:
