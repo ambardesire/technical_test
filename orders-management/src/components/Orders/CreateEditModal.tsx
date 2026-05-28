@@ -220,6 +220,7 @@ const CreateEditOrderModal = ({
           <StyledInput
             name="address"
             label="Dirección"
+            placeholder="Ingresa la dirección de entrega"
             value={newOrder.address}
             className="w-full"
             onChange={(e) =>

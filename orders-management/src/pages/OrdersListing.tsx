@@ -15,10 +15,11 @@ import DeleteIcon from "../components/icons/delete";
 import { useThemeStore } from "../store/theme";
 import DeleteOrderModal from "../components/Orders/DeleteModal";
 import CreateEditOrderModal from "../components/Orders/CreateEditModal";
+import CreateEditUserModal from "../components/Users/CreateEditModal";
 
 type OpenModal = {
   isOpen: boolean;
-  type: "edit" | "delete" | "create" | "";
+  type: "edit" | "delete" | "create" | "createUser" | "";
   id: string | null;
 };
 
@@ -145,6 +146,11 @@ const OrdersListing = () => {
         onCancel={() => setOpenModal({ isOpen: false, type: "", id: null })}
         orderId={openModal.id}
       />
+      <CreateEditUserModal
+        open={openModal.isOpen && openModal.type === "createUser"}
+        onClose={() => setOpenModal({ isOpen: false, type: "", id: null })}
+        onCancel={() => setOpenModal({ isOpen: false, type: "", id: null })}
+      />
       <DeleteOrderModal
         open={openModal.isOpen && openModal.type === "delete"}
         onClose={() => setOpenModal({ isOpen: false, type: "", id: null })}
@@ -168,7 +174,7 @@ const OrdersListing = () => {
           <StyledButton
             variety="secondary"
             onClick={() => {
-              setOpenModal({ isOpen: true, type: "create", id: null });
+              setOpenModal({ isOpen: true, type: "createUser", id: null });
             }}
           >
             + Crear usuario

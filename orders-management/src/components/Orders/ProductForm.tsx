@@ -42,6 +42,7 @@ const ProductForm = ({
         <StyledInput
           name="product-id"
           label="Código del producto"
+          placeholder="Ej. HK98HGYT"
           value={product.id}
           className="w-full"
           onChange={(e) => {
@@ -70,6 +71,7 @@ const ProductForm = ({
       <StyledInput
         name="product-name"
         label="Nombre de producto"
+        placeholder="Ingresa nombre del producto"
         value={product.name}
         className="w-full"
         onChange={(e) => {
@@ -111,6 +113,7 @@ const ProductForm = ({
           <StyledInput
             name="product-precio"
             label="Precio"
+            placeholder="0"
             value={product.price === 0 ? "" : product.price}
             type="number"
             min={0}
