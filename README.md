@@ -131,7 +131,7 @@ npm install will install all the dependencies required for the project to run co
 
 ## 🎥 Demo evidences
 
-![Demo Video](OrderManagementSystem.mp4)
+[![Watch the demo](https://img.youtube.com/vi/rd5dBOZLWyo/0.jpg)](https://youtu.be/rd5dBOZLWyo)
 
 ## Online documentation
 - Postman documents: [Postman](https://documenter.getpostman.com/view/55252723/2sBXwnsBXe)
