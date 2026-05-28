@@ -114,21 +114,19 @@ public class OrderService {
     }
 
     public List<Order> searchBy(String value) {
-        if (value == null || value.trim().isEmpty()) {
+            if (value == null || value.trim().isEmpty()) {
             return orderRepository.findAll();
         }
-
-        String trimValue = value.trim();
         
+        String trimValue = value.trim();
+
         List<Order> searchByStatus = orderRepository.findByStatusContainingIgnoreCase(trimValue);
         List<Order> searchByUserId = orderRepository.findByUserIdContainingIgnoreCase(trimValue);
-        List<Order> searchById = orderRepository.findByIdContainingIgnoreCase(trimValue);
-
-
+        
         Set<Order> results = new HashSet<>();
         results.addAll(searchByStatus);
         results.addAll(searchByUserId);
-        results.addAll(searchById);
+        orderRepository.findById(trimValue).ifPresent(results::add);
 
         return new ArrayList<>(results);
     }

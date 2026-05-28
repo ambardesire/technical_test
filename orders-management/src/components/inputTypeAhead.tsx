@@ -28,7 +28,11 @@ const InputTypeAhead = () => {
       .filter((user) => user.toLowerCase().includes(lowerCaseValue))
       .map((user) => ({ label: user, id: user }));
 
-    return [...statusSuggestions, ...userSuggestions];
+    const orderSuggestions = ordersList
+      .filter((order) => order.id.toLowerCase().includes(lowerCaseValue))
+      .map((order) => ({ label: order.id, id: order.id.toLowerCase() }));
+
+    return [...statusSuggestions, ...userSuggestions, ...orderSuggestions];
   };
 
   const suggestions = getSuggestions(searchValue);

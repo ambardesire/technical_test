@@ -15,7 +15,7 @@ const StyledButton = ({
   const customStyle =
     variety === "primary"
       ? "bg-primary color-light text-light"
-      : "bg-light color-primary text-primary";
+      : "bg-transparent color-primary text-primary";
 
   return (
     <button

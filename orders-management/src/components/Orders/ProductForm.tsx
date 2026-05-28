@@ -3,6 +3,7 @@ import StyledInput from "../input";
 import StyledInputSelect from "../inputSelect";
 import type { OrderPayload } from "../../types/order";
 import DeleteIcon from "../icons/delete";
+import { useThemeStore } from "../../store/theme";
 
 interface ProductFormProps {
   index: number;
@@ -21,6 +22,7 @@ const ProductForm = ({
   onDeleteProduct,
   hasOnlyOneProduct,
 }: ProductFormProps) => {
+  const { theme } = useThemeStore();
   const quantityOptions = () => {
     const a: { id: string; label: string }[] = [];
 
@@ -63,7 +65,11 @@ const ProductForm = ({
             type="button"
             onClick={() => onDeleteProduct(index)}
           >
-            <DeleteIcon width={28} heigth={28} />
+            <DeleteIcon
+              width={28}
+              heigth={28}
+              color={`${theme === "dark" ? "#fffdf0" : "#151515"}`}
+            />
           </button>
         )}
       </div>
